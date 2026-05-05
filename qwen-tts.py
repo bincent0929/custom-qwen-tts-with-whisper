@@ -13,6 +13,7 @@ OUTPUT_TEXT = "This is the new text I want spoken in my cloned voice."
 OUTPUT_PATH = "output.wav"
 
 # --- Step 0: Diarize reference audio and prompt for speaker selection ---
+# Diarization means "speaker" splitting basically.
 print("Loading diarization pipeline...")
 hf_token = os.environ.get("HF_TOKEN") or input("Enter your HuggingFace token: ").strip()
 diarization_pipeline = Pipeline.from_pretrained(
