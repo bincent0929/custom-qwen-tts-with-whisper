@@ -6,6 +6,7 @@ from qwen_tts import Qwen3TTSModel
 
 REF_AUDIO_PATH = "/path/to/reference.wav"
 OUTPUT_TEXT = "This is the new text I want spoken in my cloned voice."
+# I think I want to update the wording here
 OUTPUT_PATH = "output.wav"
 
 # --- Step 1: Transcribe reference audio with Whisper ---
@@ -28,6 +29,10 @@ model = Qwen3TTSModel.from_pretrained(
     "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
     device_map="cuda:0",
     dtype=torch.bfloat16,
+    # If you have more powerful hardware 
+    # or maybe patience, you can use
+    # the recommended `flash_attention_2`
+    # here instead of `sdpa`
     attn_implementation="sdpa",
 )
 
